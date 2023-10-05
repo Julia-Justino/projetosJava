@@ -2,12 +2,12 @@ package school.sptech;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
+
 
 public class Faculdade {
 
   private String nome;
-  private List<Aluno> alunos = new ArrayList<Aluno>();
+  private List<Aluno> alunos = new ArrayList<>();
 
   public Faculdade(String nome) {
   }
@@ -17,13 +17,14 @@ public class Faculdade {
       retorne false;
   */
   public Boolean existsAlunoPorNome(String nome) {
-    Boolean achou = false;
+    boolean achou = false;
     if  (nome == null){
       return false;
     }
     for (Aluno alunoVez : alunos){
-      if (nome.equalsIgnoreCase( alunoVez.getNome()  )){
+      if (nome.equalsIgnoreCase(alunoVez.getNome())) {
         achou = true;
+        break;
       }
     }
     return achou;
@@ -34,16 +35,16 @@ public class Faculdade {
       possuir um aluno com o nome informado, não deve matricular;
   */
   public void matricularAluno(Aluno aluno) {
-    System.out.println(alunos.size());
    try {
-     Boolean achou = false;
-     for (int i = 0; i <alunos.size() ; i++) {
-       if (aluno.getNome().equalsIgnoreCase( alunos.get( i ).getNome() )){
+     boolean achou = false;
+     for (Aluno value : alunos) {
+       if (aluno.getNome().equalsIgnoreCase(value.getNome())) {
          achou = true;
+         break;
        }
      }
-     if (!aluno.equals( null ) && achou == false){
-       alunos.add(aluno );
+     if (aluno != null && !achou){
+       alunos.add(aluno);
      }
    }catch (NullPointerException e) {
      String mensagem = e.getMessage() + ". O objeto nome é NULL.";
@@ -57,15 +58,14 @@ public class Faculdade {
   */
   public void cancelarMatricula(String ra) {
 try {
-  Boolean achou =  false;
   Aluno aluno;
 
-  for (int i = 0; i < alunos.size(); i++) {
-    aluno = alunos.get( i );
+  for (Aluno value : alunos) {
+    aluno = value;
 
-    if (ra.equalsIgnoreCase(aluno.getRa())){
-      aluno.setAtivo( false );
-      achou = true;
+    if (ra.equalsIgnoreCase(aluno.getRa())) {
+      aluno.setAtivo(false);
+
       break;
 
     }
@@ -80,8 +80,8 @@ try {
       Deve retornar a quantidade de alunos contidos na lista (matriculados);
   */
   public Integer getQuantidadeAlunos() {
-    Integer tam = alunos.size();
-    return tam;
+
+    return  alunos.size();
   }
 
   /*
@@ -89,28 +89,27 @@ try {
       no semestre informado;
   */
   public Integer getQuantidadeAlunosPorSemestre(Integer semestre) {
-    List<Aluno>qtdSemestre = new ArrayList<Aluno>();
+    List<Aluno>qtdSemestre = new ArrayList<>();
     for (Aluno alunoVez : alunos){
       if (alunoVez.getSemestre().equals( semestre )){
         qtdSemestre.add( alunoVez);
       }
     }
-    Integer qtd = qtdSemestre.size();
-    return qtd;
+
+    return qtdSemestre.size();
   }
 
   /*
       Deve retornar a quantidade de alunos com matrícula cancelada (contidos na lista);
   */
   public Integer getQuantidadeAlunosComMatriculaCancelada() {
-    List<Aluno>qtdSemestre = new ArrayList<Aluno>();
+    List<Aluno>qtdSemestre = new ArrayList<>();
     for (Aluno alunoVez : alunos){
       if (alunoVez.isAtivo().equals( false )){
         qtdSemestre.add( alunoVez);
       }
     }
-    Integer qtd = qtdSemestre.size();
-    return qtd;
+    return qtdSemestre.size();
   }
 
   public String getNome() {
