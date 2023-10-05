@@ -2,14 +2,17 @@ package school.sptech;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 public class Faculdade {
 
   private String nome;
-  private List<Aluno> alunos = new ArrayList<>();
+  private List<Aluno> alunos;
 
   public Faculdade(String nome) {
+    this.nome= nome;
+    this.alunos = new ArrayList<>();
   }
 
   /*
@@ -21,12 +24,14 @@ public class Faculdade {
     if  (nome == null){
       return false;
     }
+
     for (Aluno alunoVez : alunos){
-      if (nome.equalsIgnoreCase(alunoVez.getNome())) {
+      if (alunoVez.getNome().equalsIgnoreCase(nome)) {
         achou = true;
         break;
       }
     }
+
     return achou;
   }
 
@@ -37,13 +42,13 @@ public class Faculdade {
   public void matricularAluno(Aluno aluno) {
    try {
      boolean achou = false;
-     for (Aluno value : alunos) {
-       if (aluno.getNome().equalsIgnoreCase(value.getNome())) {
+     for (Aluno alunoVez : alunos) {
+       if (aluno.getNome().equalsIgnoreCase(alunoVez.getNome())) {
          achou = true;
          break;
        }
      }
-     if (aluno != null && !achou){
+     if (Objects.nonNull(aluno) && !achou){
        alunos.add(aluno);
      }
    }catch (NullPointerException e) {
@@ -58,16 +63,10 @@ public class Faculdade {
   */
   public void cancelarMatricula(String ra) {
 try {
-  Aluno aluno;
-
   for (Aluno value : alunos) {
-    aluno = value;
-
-    if (ra.equalsIgnoreCase(aluno.getRa())) {
-      aluno.setAtivo(false);
-
+    if (ra.equalsIgnoreCase(value.getRa())) {
+      value.setAtivo(false);
       break;
-
     }
   }
 } catch (NullPointerException e){
@@ -80,8 +79,7 @@ try {
       Deve retornar a quantidade de alunos contidos na lista (matriculados);
   */
   public Integer getQuantidadeAlunos() {
-
-    return  alunos.size();
+    return  this.alunos.size();
   }
 
   /*
@@ -91,11 +89,10 @@ try {
   public Integer getQuantidadeAlunosPorSemestre(Integer semestre) {
     List<Aluno>qtdSemestre = new ArrayList<>();
     for (Aluno alunoVez : alunos){
-      if (alunoVez.getSemestre().equals( semestre )){
-        qtdSemestre.add( alunoVez);
+      if (alunoVez.getSemestre().equals(semestre)){
+        qtdSemestre.add(alunoVez);
       }
     }
-
     return qtdSemestre.size();
   }
 
@@ -115,6 +112,5 @@ try {
   public String getNome() {
     return nome;
   }
-
 
 }
