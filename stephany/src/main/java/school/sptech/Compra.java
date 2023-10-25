@@ -61,13 +61,13 @@ public class Compra {
         }
         return i;
     }
-    public String getProdutoPorNome(String nome){
-        String nom = "";
+    public Produto getProdutoPorNome(String nome){
+        Produto nom = null;
         Boolean achou = false;
         if (Objects.nonNull(nome)){
             for (Produto po: produtos){
                 if (po.getNome().equalsIgnoreCase(nome)|| po.getNome().toLowerCase().contains( nome.toLowerCase() )){
-                    nom = po.getNome();
+                    nom = po;
                     achou = true;
                     break;
                 }
@@ -76,7 +76,7 @@ public class Compra {
             return null;
         }
         if (achou) {
-            return nome;
+            return nom;
         }else{
             return null;
         }
