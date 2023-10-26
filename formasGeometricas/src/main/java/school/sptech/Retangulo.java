@@ -20,6 +20,7 @@ public class Retangulo extends Figura{
     @Override
     public String toString() {
         return "Quadrado{" +
+                super.toString()+
                 "Base=" + base +
                 ", Altura=" + altura +
                 ", Total = " + calcularArea()+

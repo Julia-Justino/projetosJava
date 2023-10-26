@@ -17,6 +17,7 @@ public class Quadrado extends Figura{
     @Override
     public String toString() {
         return "Quadrado{" +
+                super.toString()+
                 "Lado=" + lado +
                 ", Total = " + calcularArea()+
                 '}';

@@ -19,6 +19,7 @@ public class Triangulo extends Figura{
     @Override
     public String toString() {
         return "Triangulo{" +
+                super.toString()+
                 "Base=" + base +
                 ", Altura=" + altura +
                 ", Total = " + calcularArea()+

@@ -8,6 +8,7 @@ public class Main {
         Retangulo retangulo1 = new Retangulo("Azul", 2, 5.0, 2.0);
         Triangulo triangulo1 = new Triangulo("Amarelo", 3, 3.0, 5.0);
         Circulo circulo1 = new Circulo("Roxo", 6, 2.5);
+        Quadrado quadrado2 = new Quadrado("Rosa", 5, 6.0);
         Imagem imagem = new Imagem();
 
 
@@ -16,6 +17,7 @@ public class Main {
         imagem.adicionarFigura(triangulo1);
         imagem.adicionarFigura(circulo1);
         imagem.adicionarFigura(circulo1);
+        imagem.adicionarFigura(quadrado2);
 
         imagem.exibeFiguras();
         imagem.exibeSomaArea();

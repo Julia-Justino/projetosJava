@@ -17,6 +17,7 @@ public class Circulo extends Figura{
     @Override
     public String toString() {
         return "Circulo{" +
+                super.toString()+
                 "Raio=" + raio +
                 ", Total = "+ Math.round(Math.PI * raio*raio)+
                 '}';

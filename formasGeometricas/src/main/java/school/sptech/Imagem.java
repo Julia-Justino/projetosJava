@@ -14,16 +14,8 @@ public class Imagem {
 
     public void adicionarFigura(Figura figura){
         if (Objects.nonNull(figura)){
-            Boolean achou = false;
-            for (Figura figVez: figuras){
-                if (figura.equals(figVez)){
-                    achou =  true;
-                }
-            }
-            if (!achou){
                 figuras.add(figura);
                 System.out.println("Cadastrado com sucesso");
-            }
         }else{
             System.out.println("Objet nulo");
         }
